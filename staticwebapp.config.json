@@ -1,0 +1,23 @@
+{
+    "routes": [
+      {
+        "route": "/authenticated/*",
+        "allowedRoles": [ "authenticated" ]
+      }
+    ],
+    "auth": {
+      "identityProviders": {
+        "azureActiveDirectory": {
+          "userDetailsClaim": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+          "registration": {
+            "openIdIssuer": "https://login.microsoftonline.com/e6a69028-dc54-4459-8f15-2d79986a7227",
+            "clientIdSettingName": "AZURE_CLIENT_ID",
+            "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+          }
+        }
+      }
+    },
+    "globalHeaders": {
+      "Cache-Control": "no-cache"
+    }
+  }
