@@ -3,7 +3,7 @@
       "identityProviders": {
         "azureActiveDirectory": {
           "registration": {
-            "openIdIssuer": "https://login.microsoftonline.com/e6a69028-dc54-4459-8f15-2d79986a7227/v2.0",
+            "openIdIssuer": "https://login.microsoftonline.com/e6a69028-dc54-4459-8f15-2d79986a7227",
             "clientIdSettingName": "AAD_CLIENT_ID",
             "clientSecretSettingName": "AAD_CLIENT_SECRET"
           }
