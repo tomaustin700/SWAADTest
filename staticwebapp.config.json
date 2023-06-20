@@ -1,52 +1,57 @@
 {
-    "auth": {
-      "identityProviders": {
-        "azureActiveDirectory": {
-          "registration": {
-            "openIdIssuer": "https://login.microsoftonline.com/e6a69028-dc54-4459-8f15-2d79986a7227/v2.0",
-            "clientIdSettingName": "AAD_CLIENT_ID",
-            "clientSecretSettingName": "AAD_CLIENT_SECRET"
-          }
-        }
-      }
-    },
-    "navigationFallback": {
-      "rewrite": "index.html"
-    },
     "routes": [
-      {
-        "route": "/login",
-        "rewrite": "/.auth/login/aad",
-        "allowedRoles": ["anonymous", "authenticated"]
-      },
-      {
-        "route": "/.auth/login/github",
-        "statusCode": 404
-      },
-      {
-        "route": "/.auth/login/twitter",
-        "statusCode": 404
-      },
-      {
-        "route": "/logout",
-        "redirect": "/.auth/logout",
-        "allowedRoles": ["anonymous", "authenticated"]
-      },
-      {
-        "route": "/*",
-        "allowedRoles": ["authenticated"]
-      }
+        {
+            "route": "/login",
+            "rewrite": "/.auth/login/aad",
+            "allowedRoles": [
+                "anonymous",
+                "authenticated"
+            ]
+        },
+        {
+            "route": "/logout",
+            "redirect": "/.auth/logout",
+            "allowedRoles": [
+                "anonymous",
+                "authenticated"
+            ]
+        },
+        {
+            "route": "/.auth/login/github",
+            "statusCode": 404
+        },
+        {
+            "route": "/.auth/login/twitter",
+            "statusCode": 404
+        },
+        {
+            "route": "/*",
+            "allowedRoles": [
+                "authenticated"
+            ]
+        }
     ],
     "responseOverrides": {
-      "401": {
-        "redirect": "/login",
-        "statusCode": 302
-      }
+        "401": {
+            "redirect": "/login",
+            "statusCode": 302
+        }
+    },
+    "navigationFallback": {
+        "rewrite": "index.html"
+    },
+    "auth": {
+        "identityProviders": {
+            "azureActiveDirectory": {
+                "registration": {
+                    "openIdIssuer": "https://login.microsoftonline.com/e6a69028-dc54-4459-8f15-2d79986a7227/v2.0",
+                    "clientIdSettingName": "AZURE_CLIENT_ID",
+                    "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+                }
+            }
+        }
     },
     "globalHeaders": {
-      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
-    },
-    "mimeTypes": {
-      ".json": "text/json"
+        "Cache-Control": "no-cache"
     }
-  }
+}
